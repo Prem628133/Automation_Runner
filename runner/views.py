@@ -1,17 +1,16 @@
-from django.http import JsonResponse
+from django.http import HttpResponse
 from django.views import View
-from .models import Check
-from .serializers import CheckSerializer
+import os
+import time
 
 
-class CheckAPI(View):
+class CheckApiView(View):
     def get(self, request):
-        # Print "Hello" to the terminal
-        print(" Hello ")
-        
-        # Save log to the database
-        choice = Check.objects.create(message="Hello")
-        
-        # Serialize the log
-        serializer = CheckSerializer(choice)
-        return JsonResponse(serializer.data)
+        #Logic to create a unique file
+        file_path = os.path.join(os.getcwd(), f"file_{int(time.time())}.txt")
+    
+        # For creating and writing content in file
+        with open(file_path, "w") as file:
+            file.write("Automation Runner.")
+        return HttpResponse(f"File created at {file_path}")
+

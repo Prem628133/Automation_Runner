@@ -17,5 +17,8 @@ COPY . .
 EXPOSE 8000
 
 #Commands
-CMD ["sh", "-c", "python3 manage.py runserver 0.0.0.0:8000 && echo 'hello'"]
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
+
+
 

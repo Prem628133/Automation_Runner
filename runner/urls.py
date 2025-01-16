@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import CheckAPI
+from .views import CheckApiView
 
 urlpatterns = [
-    path('run-test/', CheckAPI.as_view(), name='run_test'),
+    path('run-test/', CheckApiView.as_view(), name='run_test'),
 ]
